@@ -20,9 +20,9 @@ services:
         value: production
     healthCheckPath: /api/health
 
+staticSites:
   # Frontend - React/Vite Static Site
-  - type: static_site
-    name: jobportal-frontend
+  - name: jobportal-frontend
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: ./frontend/dist
     envVars:

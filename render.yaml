@@ -1,0 +1,39 @@
+# Render Blueprint - Infrastructure as Code
+# Deploy with: Connect GitHub repo → Create Blueprint
+
+services:
+  # Backend - Spring Boot API
+  - type: web
+    name: jobportal-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    envVars:
+      - key: MONGODB_URI
+        sync: false  # Set manually in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRATION
+        value: 86400000
+      - key: SPRING_PROFILES_ACTIVE
+        value: production
+    healthCheckPath: /api/health
+
+  # Frontend - React/Vite Static Site
+  - type: web
+    name: jobportal-frontend
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: ./frontend/dist
+    plan: free
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          name: jobportal-backend
+          type: web
+          property: host
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

@@ -1,0 +1,212 @@
+/* ========================================
+   SAVED JOBS PAGE STYLES
+   ======================================== */
+
+.saved-jobs-page {
+    min-height: 100vh;
+    padding: var(--spacing-xl) 0 var(--spacing-2xl);
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.page-header h1 {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.page-header p {
+    color: var(--text-secondary);
+}
+
+/* Saved Jobs Grid */
+.saved-jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+/* Saved Job Card */
+.saved-job-card {
+    padding: var(--spacing-lg);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    transition: all var(--transition-base);
+}
+
+.saved-job-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(102, 126, 234, 0.4);
+}
+
+.remove-btn {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 107, 107, 0.1);
+    color: var(--danger);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.remove-btn:hover {
+    background: var(--danger);
+    color: white;
+}
+
+.job-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-md);
+    background: var(--primary-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: white;
+}
+
+.job-content h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.job-content .company-name {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.job-meta {
+    display: flex;
+    gap: var(--spacing-md);
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+}
+
+.job-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing-sm);
+}
+
+.job-type {
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.job-type.full_time {
+    background: rgba(102, 126, 234, 0.15);
+    color: var(--primary);
+}
+
+.job-type.remote {
+    background: rgba(0, 242, 254, 0.15);
+    color: var(--accent);
+}
+
+.job-type.part_time {
+    background: rgba(255, 217, 61, 0.15);
+    color: var(--warning);
+}
+
+.job-type.contract {
+    background: rgba(118, 75, 162, 0.15);
+    color: #764ba2;
+}
+
+.saved-date {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+.job-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: auto;
+}
+
+.job-actions .btn {
+    flex: 1;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: var(--spacing-2xl);
+    max-width: 400px;
+    margin: var(--spacing-xl) auto;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.empty-state h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.empty-state p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Skeleton */
+.saved-job-card.skeleton {
+    min-height: 200px;
+}
+
+.skeleton-line {
+    height: 16px;
+    background: var(--glass-bg);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.skeleton-line.large {
+    width: 70%;
+    height: 24px;
+}
+
+.skeleton-line.medium {
+    width: 50%;
+}
+
+.skeleton-line.small {
+    width: 30%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+
+    .saved-jobs-grid {
+        grid-template-columns: 1fr;
+    }
+}
